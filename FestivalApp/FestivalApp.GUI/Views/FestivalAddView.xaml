@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="FestivalApp.GUI.Views.FestivalAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:FestivalApp.GUI.Views"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             mc:Ignorable="d"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             d:DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=FestivalDetailViewModel}"
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=FestivalDetailViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row ="0" RenderOptions.EdgeMode="Aliased" Background="{StaticResource BrushLighterBlue}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" FontSize="40" Content="Title:"></Label>
+            <TextBox Grid.Column="1" MinWidth="30" FontSize="40" Text="{Binding Festival.Title, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <Grid Grid.Row="1" RenderOptions.EdgeMode="Aliased">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" FontSize="30" Content="From:"/>
+            <TextBox Grid.Column="1" FontSize="30" MinWidth="30" Text="{Binding Festival.Start, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Grid.Column="2" FontSize="30" Content="To:"/>
+            <TextBox Grid.Column="3" FontSize="30" MinWidth="30" Text="{Binding Festival.End, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" FontSize="30" Content="Capacity:"/>
+            <TextBox Grid.Column="1" FontSize="30" MinWidth="30" Text="{Binding Festival.Capacity, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" FontSize="30" Content="Stages:"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button Content="ADD STAGE" Command="{Binding AddStageCommand}" CommandParameter="{Binding Festival}" Margin="10 10 10 10" HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Button Content="SAVE" Command="{Binding SaveFestivalCommand}" CommandParameter="{Binding Festival}" Grid.Row="5" Grid.Column="1" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.536,0.746"/>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

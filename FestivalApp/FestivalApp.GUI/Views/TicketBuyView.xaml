@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="FestivalApp.GUI.Views.TicketBuyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             mc:Ignorable="d"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             
+             DataContext="{Binding Source={StaticResource ViewModelLocator},Path=TicketListViewModel}"
+             d:DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=TicketListViewModel}"
+             
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row ="0" Grid.ColumnSpan="2" RenderOptions.EdgeMode="Aliased" Background="{StaticResource BrushLighterBlue}">
+            <Label Padding="5" FontSize="40" Content="{Binding }" Margin="0 0 0 10"></Label>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Festival Start: "/>
+            <Label Grid.Column="1" Content="{Binding Festival.Start}"/>
+            <Label Grid.Column="2" Content="Festival End: "/>
+            <Label Grid.Column="3" Content="{Binding Festival.End}"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" RenderOptions.EdgeMode="Aliased">
+            <ComboBox ItemsSource="{Binding Festival.Type}"
+                      DisplayMemberPath=""
+                      SelectedValuePath=""
+                      SelectedValue=""
+                      HorizontalAlignment="Left"
+                      Margin="10 0 0 0"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Start Date: "/>
+            <DatePicker Grid.Column="1" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Price: "/>
+            <Label Grid.Column="1" Content="{Binding Festival.PriceAmount}"/>
+            <Label Grid.Column="2" Content="{Binding Festival.PriceCurrency}"/>
+        </Grid>
+        <Button Grid.Row="3" Grid.Column="1" Content="BUY TICKET" Margin="200 0 20 0" Command=""/>
+    </Grid>
+</UserControl>

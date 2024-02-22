@@ -1,0 +1,44 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  solution: 'App/App.sln'
+  
+steps:
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'restore'
+      projects: '**/*.csproj'
+    displayName: 'Restore Nuget Packages'
+    
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      projects: '**/*.csproj'
+      arguments: '--no-restore'
+    displayName: 'Build projects'
+    
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'test'
+      projects: '**/**/FestivalApp.DAL.Tests.csproj'
+      arguments: '--no-restore'
+    displayName: 'Run DAL Tests'
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'test'
+      projects: '**/**/FestivalApp.BL.Tests.csproj'
+      arguments: '--no-restore'
+    displayName: 'Run BL Tests'
+    
+  - task: ShellScript@2
+    inputs:
+      scriptPath: "scripts\\format-code.sh"
+      args: '--check'
+    displayName: 'Run format check'

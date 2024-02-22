@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="FestivalApp.GUI.Controls.NavBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource BrushShadowLightBlue}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800"
+             
+             DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=NavBarViewModel}"
+        d:DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=NavBarViewModel}"
+             >
+             
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" RenderOptions.EdgeMode="Aliased" Background="{StaticResource BrushLighterBlue}">
+            <Grid.Resources>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource NavButton}"/>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <RadioButton Grid.Column="0" Content="Home" Command="{Binding PageCommand}" CommandParameter="Home" />
+            <RadioButton Grid.Column="1" Content="Artists" Command="{Binding PageCommand}" CommandParameter="Artists" />
+            <RadioButton Grid.Column="2" Content="Tickets" Command="{Binding PageCommand}" CommandParameter="Tickets" />
+            <RadioButton Grid.Column="5" Content="User" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="62" Command="{Binding PageCommand}" CommandParameter="User" />
+            <materialDesign:PackIcon Grid.Column="5" Kind="Account" VerticalAlignment="Center" Margin="46,0,0,0"/>
+            </Grid>
+    </Grid>
+</UserControl>

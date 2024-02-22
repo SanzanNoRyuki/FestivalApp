@@ -1,0 +1,81 @@
+﻿<Window x:Class="FestivalApp.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:FestivalApp.GUI.Controls"
+        xmlns:views="clr-namespace:FestivalApp.GUI.Views"
+        xmlns:viewmodels="clr-namespace:FestivalApp.GUI.ViewModels"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        
+        DataContext="{Binding Source={StaticResource ViewModelLocator}}"
+        d:DataContext="{Binding Source={StaticResource ViewModelLocator}}"
+        Title="Festivals" Height="550" Width="900">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <controls:NavBar Grid.Row="0"/>
+        <ContentControl Grid.Row="1" Content="{Binding CurrenViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:FestivalListViewModel}">
+                    <views:FestivalListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:FestivalDetailViewModel}">
+                    <views:FestivalDetailView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ArtistListViewModel}">
+                    <views:ArtistListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ArtistDetailViewModel}">
+                    <views:ArtistDetailView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:StageListViewModel}">
+                    <views:StageListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:StageDetailViewModel}">
+                    <views:StageDetailView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ShowListViewModel}">
+                    <views:ShowListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ShowDetailViewModel}">
+                    <views:ShowDetailView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:TicketListViewModel}">
+                    <views:TicketListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:UserDetailViewModel}">
+                    <views:UserDetailView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:FestivalAddViewModel}">
+                    <views:FestivalAddView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:StageAddViewModel}">
+                    <views:StageAddView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ArtistAddViewModel}">
+                    <views:ArtistAddView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ShowAddViewModel}">
+                    <views:ShowAddView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:TicketDetailViewModel}">
+                    <views:TicketAddView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:TicketListFestivalViewModel}">
+                    <views:TicketListFestivalView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Grid>
+</Window>

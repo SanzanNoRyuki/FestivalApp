@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Dorothy.jpg" />
+    <None Remove="Images\east.jpg" />
+    <None Remove="Images\freddy.jpg" />
+    <None Remove="Images\ImagineDragons.jpg" />
+    <None Remove="Images\main.jpg" />
+    <None Remove="Images\new.jpg" />
+    <None Remove="Images\Queen.jpg" />
+    <None Remove="Images\west.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\east.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\freddy.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\new.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\west.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FestivalApp.BL.Tests\FestivalApp.BL.Tests.csproj" />
+    <ProjectReference Include="..\FestivalApp.BL\FestivalApp.BL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="MaterialDesignColors" Version="2.0.0" />
+	  <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+	  <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Dorothy.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\ImagineDragons.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Queen.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\main.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
